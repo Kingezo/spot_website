@@ -1,6 +1,6 @@
 "use client";
 
-import React, { useState } from "react";
+import React, { useState, useRef } from "react";
 import { Button } from "./componenents/Button";  // ✅ Fixed typo in import
 import { db, collection, addDoc } from "./firebaseConfig";
 
@@ -29,6 +29,12 @@ export default function Home() {
       setStatus("Error signing up. Please try again.");
     }
   };
+  const waitlistRef = useRef(null);
+
+  const scrollToWaitlist = () => {
+    console.log("Scrolling Now")
+    waitlistRef.current?.scrollIntoView({ behavior: "smooth" });
+  };
 
   return (
     <div className="bg-white text-gray-900 min-h-screen flex flex-col items-center">
@@ -39,7 +45,7 @@ export default function Home() {
           Save Money and Build Credit Today!
         </p>
         <Button
-          onClick={handleSignUp}
+          onClick={scrollToWaitlist}
           className="bg-white text-green-600 px-8 py-3 rounded-lg shadow-lg hover:bg-gray-200 transition"
         >
           Join the Waitlist
@@ -88,26 +94,26 @@ export default function Home() {
       </section>
 
       {/* Join Waitlist */}
-      <section className="text-center py-16 bg-gray-100 w-full">
-        <h2 className="text-3xl font-bold mb-4 text-green-700">Join the Waitlist</h2>
-        <p className="text-lg text-gray-700 mb-6">Be the first to experience Spot. Enter your email below.</p>
-        <div className="flex justify-center">
-          <input
-            type="email"
-            placeholder="Your email"
-            value={email}
-            onChange={(e) => setEmail(e.target.value)}
-            className="px-4 py-2 border rounded-lg shadow-md w-72"
-          />
-          <Button
-            onClick={handleSignUp}
-            className="bg-green-600 text-white px-6 py-3 rounded-lg shadow-lg ml-2 hover:bg-green-700 transition"
-          >
-            Join Waitlist
-          </Button>
-        </div>
-        {status && <p className="mt-4 text-green-600">{status}</p>}
-      </section>
+<section ref={waitlistRef} className="text-center py-16 bg-gray-100 w-full">
+  <h2 className="text-3xl font-bold mb-4 text-green-700">Join the Waitlist</h2>
+  <p className="text-lg text-gray-700 mb-6">Be the first to experience Spot. Enter your email below.</p>
+  <div className="flex justify-center">
+    <input
+      type="email"
+      placeholder="Your email"
+      value={email}
+      onChange={(e) => setEmail(e.target.value)}
+      className="px-4 py-2 border rounded-lg shadow-md w-72"
+    />
+    <Button
+      onClick={handleSignUp}
+      className="bg-green-600 text-white px-6 py-3 rounded-lg shadow-lg ml-2 hover:bg-green-700 transition"
+    >
+      Join Waitlist
+    </Button>
+  </div>
+  {status && <p className="mt-4 text-green-600">{status}</p>}
+</section>
     </div>
   );
 }
