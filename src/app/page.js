@@ -1,38 +1,42 @@
 "use client";
-
+import { collection, addDoc } from "firebase/firestore"; // Import Firestore functions correctly
 import React, { useState, useRef } from "react";
 import { Button } from "./componenents/Button";  // ✅ Fixed typo in import
-import { db, collection, addDoc } from "./firebaseConfig";
+import { db } from "./firebaseConfig";
 
 export default function Home() {
   const [email, setEmail] = useState("");
   const [status, setStatus] = useState(""); // ✅ Added useState for status
-
   const handleSignUp = async () => {
-    console.log("Sign-up button clicked!"); // Debugging log
+    console.log("✅ Sign-up button clicked!"); 
+  
     if (!email) {
-      console.log("No email entered!");
+      console.log("⚠️ No email entered!");
       setStatus("Please enter an email!");
       return;
     }
-
+  
     try {
-      // ✅ Ensure collection name is valid
-      console.log("Attempting to add email:", email);
-      await addDoc(collection(db, "spot_waitlist"), { email });
+      console.log("📡 Attempting Firestore write:", email);
       
-      console.log("Email successfully added to Firestore!");
+      const docRef = await addDoc(collection(db, "spot_waitlist"), {
+        email: email,
+        createdAt: new Date()
+      });
+  
+      console.log("🎉 Success! Document ID:", docRef.id);
       setStatus("Success! You’ve joined the waitlist.");
-      setEmail(""); // Clear input after success
+      setEmail(""); 
     } catch (error) {
-      console.error("Error signing up:", error);
+      console.error("🔥 Firestore error:", error.code, error.message);
       setStatus("Error signing up. Please try again.");
     }
   };
+  
   const waitlistRef = useRef(null);
 
   const scrollToWaitlist = () => {
-    console.log("Scrolling Now")
+    console.log("✅ scrollToWaitList clicked"); // This should always appear when clicking the button
     waitlistRef.current?.scrollIntoView({ behavior: "smooth" });
   };
 
