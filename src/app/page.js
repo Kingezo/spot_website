@@ -1,12 +1,32 @@
 "use client";
-import { collection, addDoc } from "firebase/firestore"; // Import Firestore functions correctly
+import { collection, addDoc } from "firebase/firestore";
 import React, { useState, useRef } from "react";
-import { Button } from "./componenents/Button";  // ✅ Fixed typo in import
+import { Button } from "./componenents/Button";
 import { db } from "./firebaseConfig";
 
 export default function Home() {
   const [email, setEmail] = useState("");
-  const [status, setStatus] = useState(""); // ✅ Added useState for status
+  const [status, setStatus] = useState("");
+
+  // Android email request state
+  const [androidOpen, setAndroidOpen] = useState(false);
+  const [androidEmail, setAndroidEmail] = useState("");
+  const [androidStatus, setAndroidStatus] = useState(""); // "" | "sending" | "sent" | "error"
+
+  const handleAndroidRequest = async () => {
+    if (!androidEmail) return;
+    setAndroidStatus("sending");
+    try {
+      await addDoc(collection(db, "spot_android_testers"), {
+        email: androidEmail,
+        createdAt: new Date(),
+      });
+      setAndroidStatus("sent");
+      setAndroidEmail("");
+    } catch {
+      setAndroidStatus("error");
+    }
+  };
   const handleSignUp = async () => {
     console.log("✅ Sign-up button clicked!"); 
   
@@ -124,6 +144,77 @@ export default function Home() {
             allowFullScreen
           />
         </div>
+      </section>
+
+      {/* Join Today */}
+      <section className="w-full bg-gray-50 py-16 px-6 text-center border-t border-gray-100">
+        <h2 className="text-3xl font-bold mb-2 text-green-700">Join Today!</h2>
+        <p className="text-gray-500 mb-10 text-lg">Available on iOS and Android.</p>
+
+        <div className="flex flex-col sm:flex-row gap-4 justify-center items-center max-w-sm mx-auto">
+          {/* iOS button */}
+          <a
+            href="https://testflight.apple.com/join/Ack2ueKr"
+            className="w-full sm:w-auto flex items-center justify-center gap-2 px-8 py-3 rounded-xl font-semibold text-white shadow-md transition active:opacity-80"
+            style={{ backgroundColor: "#007260" }}
+          >
+            <svg width="20" height="20" viewBox="0 0 24 24" fill="currentColor">
+              <path d="M18.71 19.5c-.83 1.24-1.71 2.45-3.05 2.47-1.34.03-1.77-.79-3.29-.79-1.53 0-2 .77-3.27.82-1.31.05-2.3-1.32-3.14-2.53C4.25 17 2.94 12.45 4.7 9.39c.87-1.52 2.43-2.48 4.12-2.51 1.28-.02 2.5.87 3.29.87.78 0 2.26-1.07 3.8-.91.65.03 2.47.26 3.64 1.98-.09.06-2.17 1.28-2.15 3.81.03 3.02 2.65 4.03 2.68 4.04-.03.07-.42 1.44-1.38 2.83M13 3.5c.73-.83 1.94-1.46 2.94-1.5.13 1.17-.34 2.35-1.04 3.19-.69.85-1.83 1.51-2.95 1.42-.15-1.15.41-2.35 1.05-3.11z" />
+            </svg>
+            iOS
+          </a>
+
+          {/* Android button */}
+          <button
+            onClick={() => setAndroidOpen((o) => !o)}
+            className="w-full sm:w-auto flex items-center justify-center gap-2 px-8 py-3 rounded-xl font-semibold text-white shadow-md transition active:opacity-80"
+            style={{ backgroundColor: "#007260" }}
+          >
+            <svg width="20" height="20" viewBox="0 0 24 24" fill="currentColor">
+              <path d="M17.523 15.341a.75.75 0 0 1-.75.75H7.227a.75.75 0 0 1-.75-.75V9.75h11.046v5.591ZM6.477 8.25V6.568a5.523 5.523 0 0 1 11.046 0V8.25H6.477Zm-1.5 0h-.75A1.5 1.5 0 0 0 2.727 9.75v3a1.5 1.5 0 0 0 1.5 1.5h.75V8.25Zm16.546 0h-.75v6h.75a1.5 1.5 0 0 0 1.5-1.5v-3a1.5 1.5 0 0 0-1.5-1.5ZM9 5.25a.75.75 0 1 0 0 1.5.75.75 0 0 0 0-1.5Zm6 0a.75.75 0 1 0 0 1.5.75.75 0 0 0 0-1.5ZM8.25 18v1.5a.75.75 0 0 0 1.5 0V18h-1.5Zm6 0v1.5a.75.75 0 0 0 1.5 0V18h-1.5Z" />
+            </svg>
+            Android
+          </button>
+        </div>
+
+        {/* Android email drop-down */}
+        {androidOpen && (
+          <div className="mt-6 max-w-sm mx-auto bg-white border border-gray-200 rounded-2xl px-6 py-6 shadow-md text-left">
+            <p className="text-sm font-semibold text-gray-900 mb-1">Get early access on Android</p>
+            <p className="text-sm text-gray-500 mb-4">
+              Spot is in private testing on Android. Drop your email and we&rsquo;ll
+              add you to the list — you&rsquo;ll hear back within 24&nbsp;hours.
+            </p>
+
+            {androidStatus === "sent" ? (
+              <p className="text-sm font-semibold" style={{ color: "#007260" }}>
+                You&rsquo;re on the list! We&rsquo;ll be in touch soon.
+              </p>
+            ) : (
+              <>
+                <input
+                  type="email"
+                  placeholder="your@email.com"
+                  value={androidEmail}
+                  onChange={(e) => setAndroidEmail(e.target.value)}
+                  onKeyDown={(e) => e.key === "Enter" && handleAndroidRequest()}
+                  className="w-full px-4 py-2 border border-gray-300 rounded-lg text-sm mb-3 focus:outline-none focus:ring-2 focus:ring-green-600"
+                />
+                <button
+                  onClick={handleAndroidRequest}
+                  disabled={androidStatus === "sending"}
+                  className="w-full py-2 rounded-lg text-sm font-semibold text-white transition active:opacity-80 disabled:opacity-50"
+                  style={{ backgroundColor: "#007260" }}
+                >
+                  {androidStatus === "sending" ? "Sending…" : "Request Access"}
+                </button>
+                {androidStatus === "error" && (
+                  <p className="text-xs text-red-500 mt-2">Something went wrong. Please try again.</p>
+                )}
+              </>
+            )}
+          </div>
+        )}
       </section>
 
       {/* Join Waitlist */}
