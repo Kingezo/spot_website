@@ -71,20 +71,6 @@ export default function Home() {
         </div>
       </section>
 
-      {/* Demo Video */}
-      <section className="py-16 px-8 w-full max-w-xl text-center">
-        <h2 className="text-3xl font-bold mb-6 text-green-700">See Spot in Action</h2>
-        <div className="relative w-full overflow-hidden rounded-2xl shadow-lg" style={{ paddingTop: "177.78%" }}>
-          <iframe
-            className="absolute inset-0 w-full h-full"
-            src="https://www.youtube.com/embed/rqZkkxpVd94"
-            title="Spot Demo"
-            allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
-            allowFullScreen
-          />
-        </div>
-      </section>
-
       {/* How It Works */}
       <section className="py-16 px-8 w-full max-w-5xl">
         <h2 className="text-3xl font-bold text-center mb-8 text-green-700">How It Works</h2>
@@ -124,6 +110,20 @@ export default function Home() {
         <p className="text-lg text-gray-700 max-w-2xl mx-auto">
           Your transactions are protected with the latest security measures. We ensure your money and data are safe.
         </p>
+      </section>
+
+      {/* Demo Video */}
+      <section className="py-16 px-8 w-full max-w-4xl text-center">
+        <h2 className="text-3xl font-bold mb-6 text-green-700">See Spot in Action</h2>
+        <div className="relative w-full overflow-hidden rounded-2xl shadow-lg" style={{ paddingTop: "56.25%" }}>
+          <iframe
+            className="absolute inset-0 w-full h-full"
+            src="https://www.youtube.com/watch?v=rqZkkxpVd94"
+            title="Spot Demo"
+            allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+            allowFullScreen
+          />
+        </div>
       </section>
 
       {/* Join Waitlist */}

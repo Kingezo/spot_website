@@ -157,76 +157,82 @@ function JoinPageContent() {
           Open in App
         </a>
 
-        {/* ── Android: tester sign-up instructions ── */}
-        {appNotFound && platform === "android" && (
-          <div className="bg-gray-50 border border-gray-200 rounded-xl px-5 py-5 text-left">
-            <p className="text-sm font-semibold text-gray-900 mb-1">
-              Get Spot on Android
-            </p>
-            <p className="text-sm text-gray-500 mb-4">
-              Spot is currently in private testing on Android. Enter your email
-              and we&rsquo;ll add you to the testers list — you&rsquo;ll get
-              access within 24&nbsp;hours.
-            </p>
-
-            {emailStatus === "sent" ? (
-              <p className="text-sm font-medium" style={{ color: "#007260" }}>
-                Got it! We&rsquo;ll send you access soon.
+        {/* ── Don't have the app? Always visible ── */}
+        <div className="mt-2 space-y-3">
+          {/* Android card */}
+          {platform !== "ios" && (
+            <div className="bg-gray-50 border border-gray-200 rounded-xl px-5 py-5 text-left">
+              <p className="text-sm font-semibold text-gray-900 mb-1">
+                Get Spot on Android
               </p>
-            ) : (
-              <>
-                <input
-                  type="email"
-                  placeholder="your@email.com"
-                  value={email}
-                  onChange={(e) => setEmail(e.target.value)}
-                  onKeyDown={(e) => e.key === "Enter" && handleEmailSubmit()}
-                  className="w-full px-4 py-2 border border-gray-300 rounded-lg text-sm mb-3 focus:outline-none focus:ring-2"
-                  style={{ focusRingColor: "#007260" }}
-                />
-                <button
-                  onClick={handleEmailSubmit}
-                  disabled={emailStatus === "sending"}
-                  className="w-full py-2 rounded-lg text-sm font-semibold text-white transition active:opacity-80 disabled:opacity-50"
-                  style={{ backgroundColor: "#007260" }}
+              <p className="text-sm text-gray-500 mb-4">
+                Spot is currently in private testing on Android. Enter your
+                email and we&rsquo;ll add you to the testers list — you&rsquo;ll
+                get access within 24&nbsp;hours.
+              </p>
+
+              {emailStatus === "sent" ? (
+                <p className="text-sm font-medium" style={{ color: "#007260" }}>
+                  Got it! We&rsquo;ll send you access soon.
+                </p>
+              ) : (
+                <>
+                  <input
+                    type="email"
+                    placeholder="your@email.com"
+                    value={email}
+                    onChange={(e) => setEmail(e.target.value)}
+                    onKeyDown={(e) => e.key === "Enter" && handleEmailSubmit()}
+                    className="w-full px-4 py-2 border border-gray-300 rounded-lg text-sm mb-3 focus:outline-none focus:ring-2"
+                  />
+                  <button
+                    onClick={handleEmailSubmit}
+                    disabled={emailStatus === "sending"}
+                    className="w-full py-2 rounded-lg text-sm font-semibold text-white transition active:opacity-80 disabled:opacity-50"
+                    style={{ backgroundColor: "#007260" }}
+                  >
+                    {emailStatus === "sending" ? "Sending…" : "Request Access"}
+                  </button>
+                  {emailStatus === "error" && (
+                    <p className="text-xs text-red-500 mt-2">
+                      Something went wrong. Please try again.
+                    </p>
+                  )}
+                </>
+              )}
+
+              <p className="text-xs text-gray-400 mt-4">
+                Already been added?{" "}
+                <a
+                  href={ANDROID_INTERNAL_TEST_URL}
+                  className="underline font-medium"
+                  style={{ color: "#007260" }}
                 >
-                  {emailStatus === "sending" ? "Sending…" : "Request Access"}
-                </button>
-                {emailStatus === "error" && (
-                  <p className="text-xs text-red-500 mt-2">
-                    Something went wrong. Please try again.
-                  </p>
-                )}
-              </>
-            )}
+                  Install via Google Play
+                </a>
+              </p>
+            </div>
+          )}
 
-            {/* Link to install once they've been added */}
-            <p className="text-xs text-gray-400 mt-4">
-              Already been added?{" "}
+          {/* iOS TestFlight */}
+          {platform !== "android" && (
+            <div className="bg-gray-50 border border-gray-200 rounded-xl px-5 py-4 text-left">
+              <p className="text-sm font-semibold text-gray-900 mb-1">
+                Get Spot on iOS
+              </p>
+              <p className="text-sm text-gray-500 mb-3">
+                Download Spot via TestFlight to join your group.
+              </p>
               <a
-                href={ANDROID_INTERNAL_TEST_URL}
-                className="underline font-medium"
-                style={{ color: "#007260" }}
+                href={IOS_TESTFLIGHT_URL}
+                className="block w-full text-center py-2 rounded-lg text-sm font-semibold text-white transition active:opacity-80"
+                style={{ backgroundColor: "#007260" }}
               >
-                Install via Google Play
+                Join via TestFlight
               </a>
-            </p>
-          </div>
-        )}
-
-        {/* ── iOS: TestFlight fallback (shown if redirect didn't fire) ── */}
-        {appNotFound && platform === "ios" && (
-          <p className="text-sm text-gray-400">
-            Don&rsquo;t have Spot yet?{" "}
-            <a
-              href={IOS_TESTFLIGHT_URL}
-              className="underline font-medium"
-              style={{ color: "#007260" }}
-            >
-              Join via TestFlight
-            </a>
-          </p>
-        )}
+            </div>
+          )}
+        </div>
       </div>
     </div>
   );
