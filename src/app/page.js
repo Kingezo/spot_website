@@ -118,17 +118,20 @@ export default function Home() {
 
       {/* Credit Building */}
       <section className="bg-green-600 py-16 px-8 text-center text-white w-full">
+        <span className="inline-block bg-white text-green-700 text-xs font-bold uppercase tracking-widest px-3 py-1 rounded-full mb-4">
+          Coming Soon
+        </span>
         <h2 className="text-3xl font-bold mb-4">Build Your Credit with On-Time Payments</h2>
         <p className="text-lg max-w-2xl mx-auto">
           Spot helps users improve their credit by reporting on-time payments to major credit bureaus.
         </p>
       </section>
 
-      {/* Security & Trust */}
-      <section className="py-16 px-8 text-center w-full max-w-5xl">
-        <h2 className="text-3xl font-bold mb-4 text-green-700">Security & Trust</h2>
+      {/* More Than Saving Alone */}
+      <section className="py-16 px-8 text-center w-full max-w-3xl">
+        <h2 className="text-3xl font-bold mb-4 text-green-700">More Than Saving Alone</h2>
         <p className="text-lg text-gray-700 max-w-2xl mx-auto">
-          Your transactions are protected with the latest security measures. We ensure your money and data are safe.
+          Spot turns saving into a shared goal. Members stay accountable, support each other, and take turns receiving a larger payout — giving some a boost today while helping everyone build toward their goals over time.
         </p>
       </section>
 
