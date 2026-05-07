@@ -196,6 +196,7 @@ export default function Home() {
       {/* Money Pools Around the World */}
       {(() => {
         const pools = [
+          { name: "Spot", region: "United States", code: "us" },
           { name: "Tanda", region: "Mexico / Latin America", code: "mx" },
           { name: "Susu / Sou-Sou", region: "West Africa & Caribbean", code: "gh" },
           { name: "Esusu", region: "Nigeria / West Africa", code: "ng" },
