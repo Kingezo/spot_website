@@ -32,8 +32,8 @@ const t = {
     android_request: "Request Access",
     android_sending: "Sending…",
     android_error: "Something went wrong. Please try again.",
-    waitlist_title: "Join the Waitlist",
-    waitlist_subtitle: "Be the first to experience Spot. Enter your email below.",
+    waitlist_title: "Let Us Spot You!",
+    waitlist_subtitle: "Stay up to date with the latest info, updates, and early access news.",
     waitlist_placeholder: "Your email",
     waitlist_cta: "Join Waitlist",
     waitlist_success: "Success! You've joined the waitlist.",
@@ -67,8 +67,8 @@ const t = {
     android_request: "Solicitar acceso",
     android_sending: "Enviando…",
     android_error: "Algo salió mal. Por favor intenta de nuevo.",
-    waitlist_title: "Únete a la lista de espera",
-    waitlist_subtitle: "Sé el primero en experimentar Spot. Ingresa tu correo abajo.",
+    waitlist_title: "¡Déjanos ayudarte!",
+    waitlist_subtitle: "Mantente al día con las últimas noticias, actualizaciones y acceso anticipado.",
     waitlist_placeholder: "Tu correo electrónico",
     waitlist_cta: "Unirse",
     waitlist_success: "¡Éxito! Te has unido a la lista de espera.",
@@ -212,7 +212,7 @@ export default function Home() {
           <a
             href="https://testflight.apple.com/join/Ack2ueKr"
             className="w-full sm:w-auto flex items-center justify-center gap-2 px-8 py-3 rounded-xl font-semibold text-white shadow-md transition active:opacity-80"
-            style={{ backgroundColor: "#007260" }}
+            style={{ backgroundColor: "#39B68D" }}
           >
             <svg width="20" height="20" viewBox="0 0 24 24" fill="currentColor">
               <path d="M18.71 19.5c-.83 1.24-1.71 2.45-3.05 2.47-1.34.03-1.77-.79-3.29-.79-1.53 0-2 .77-3.27.82-1.31.05-2.3-1.32-3.14-2.53C4.25 17 2.94 12.45 4.7 9.39c.87-1.52 2.43-2.48 4.12-2.51 1.28-.02 2.5.87 3.29.87.78 0 2.26-1.07 3.8-.91.65.03 2.47.26 3.64 1.98-.09.06-2.17 1.28-2.15 3.81.03 3.02 2.65 4.03 2.68 4.04-.03.07-.42 1.44-1.38 2.83M13 3.5c.73-.83 1.94-1.46 2.94-1.5.13 1.17-.34 2.35-1.04 3.19-.69.85-1.83 1.51-2.95 1.42-.15-1.15.41-2.35 1.05-3.11z" />
@@ -223,7 +223,7 @@ export default function Home() {
           <button
             onClick={() => setAndroidOpen((o) => !o)}
             className="w-full sm:w-auto flex items-center justify-center gap-2 px-8 py-3 rounded-xl font-semibold text-white shadow-md transition active:opacity-80"
-            style={{ backgroundColor: "#007260" }}
+            style={{ backgroundColor: "#39B68D" }}
           >
             <svg width="20" height="20" viewBox="0 0 24 24" fill="currentColor">
               <path d="M17.523 15.341a.75.75 0 0 1-.75.75H7.227a.75.75 0 0 1-.75-.75V9.75h11.046v5.591ZM6.477 8.25V6.568a5.523 5.523 0 0 1 11.046 0V8.25H6.477Zm-1.5 0h-.75A1.5 1.5 0 0 0 2.727 9.75v3a1.5 1.5 0 0 0 1.5 1.5h.75V8.25Zm16.546 0h-.75v6h.75a1.5 1.5 0 0 0 1.5-1.5v-3a1.5 1.5 0 0 0-1.5-1.5ZM9 5.25a.75.75 0 1 0 0 1.5.75.75 0 0 0 0-1.5Zm6 0a.75.75 0 1 0 0 1.5.75.75 0 0 0 0-1.5ZM8.25 18v1.5a.75.75 0 0 0 1.5 0V18h-1.5Zm6 0v1.5a.75.75 0 0 0 1.5 0V18h-1.5Z" />
