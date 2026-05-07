@@ -22,6 +22,9 @@ const t = {
     credit_banner_body: "Spot helps users improve their credit by reporting on-time payments to major credit bureaus.",
     community_title: "More Than Saving Alone",
     community_body: "Spot turns saving into a shared goal. Members stay accountable, support each other, and take turns receiving a larger payout — giving some a boost today while helping everyone build toward their goals over time.",
+    pools_title: "What People Call Money Pools Around the World",
+    tradition_title: "A Tradition Built on Community",
+    tradition_body: "Money pools are not new — they have existed for centuries across cultures as a way for people to save, support each other, and access larger sums of money without relying on banks. Known academically as ROSCAs, or Rotating Savings and Credit Associations, these groups work by having members contribute regularly and take turns receiving the full payout. At their core, they are built on trust, accountability, and community — the same principles Spot is bringing into a modern, transparent app experience.",
     video_title: "See Spot in Action",
     join_title: "Join Today!",
     join_subtitle: "Available on iOS and Android.",
@@ -57,6 +60,9 @@ const t = {
     credit_banner_body: "Spot ayuda a los usuarios a mejorar su crédito reportando pagos puntuales a las principales agencias.",
     community_title: "Más que ahorrar solo",
     community_body: "Spot convierte el ahorro en una meta compartida. Los miembros se mantienen responsables, se apoyan mutuamente y se turnan para recibir un pago mayor — dándole un impulso a algunos hoy mientras todos avanzan hacia sus metas.",
+    pools_title: "Cómo llaman a las tandas alrededor del mundo",
+    tradition_title: "Una tradición construida en comunidad",
+    tradition_body: "Las tandas no son algo nuevo — han existido por siglos en distintas culturas como una forma de ahorrar, apoyarse mutuamente y acceder a sumas mayores de dinero sin depender de los bancos. Conocidas académicamente como ROSCAs, o Asociaciones de Ahorro y Crédito Rotativo, estos grupos funcionan con contribuciones regulares de sus miembros, quienes se turnan para recibir el pago completo. En esencia, se basan en la confianza, la responsabilidad y la comunidad — los mismos principios que Spot trae a una experiencia moderna y transparente.",
     video_title: "Mira Spot en acción",
     join_title: "¡Únete hoy!",
     join_subtitle: "Disponible en iOS y Android.",
@@ -188,6 +194,51 @@ export default function Home() {
         <h2 className="text-3xl font-bold mb-4 text-green-700">{c.community_title}</h2>
         <p className="text-lg text-gray-700 max-w-2xl mx-auto">{c.community_body}</p>
       </section>
+
+      {/* Money Pools Around the World */}
+      {(() => {
+        const pools = [
+          { name: "Tanda", region: "Mexico / Latin America" },
+          { name: "Susu / Sou-Sou / Osusu", region: "West Africa & Caribbean" },
+          { name: "Esusu", region: "Nigeria / West Africa" },
+          { name: "Pardna / Partner / Pardner", region: "Caribbean" },
+          { name: "Chama", region: "East Africa" },
+          { name: "Hagbad", region: "Somali communities" },
+          { name: "Stokvel", region: "South Africa" },
+          { name: "Equb / Ekub", region: "Ethiopia" },
+          { name: "Hui", region: "China / Chinese communities" },
+          { name: "Hụi / Hội", region: "Vietnam" },
+          { name: "Paluwagan", region: "Philippines" },
+          { name: "Kameti / Committee", region: "Pakistan / India" },
+          { name: "Chit Fund", region: "India" },
+          { name: "Kye / Gye", region: "Korea" },
+          { name: "Tanomoshi-ko / Mujin", region: "Japan" },
+          { name: "Cundina", region: "Mexico / Mexican-American communities" },
+          { name: "Consórcio", region: "Brazil" },
+          { name: "Cuchubal", region: "Guatemala" },
+          { name: "Junta / Pandero", region: "Peru" },
+          { name: "Merry-go-round", region: "Kenya / East Africa" },
+        ];
+        return (
+          <section className="w-full bg-gray-50 py-16 border-t border-gray-100">
+            <div className="max-w-4xl mx-auto text-center px-6 mb-12">
+              <h2 className="text-3xl font-bold mb-10 text-green-700">{c.pools_title}</h2>
+              <h3 className="text-2xl font-bold mb-4 text-green-700">{c.tradition_title}</h3>
+              <p className="text-gray-700 text-lg max-w-3xl mx-auto leading-relaxed">{c.tradition_body}</p>
+            </div>
+            <div className="overflow-hidden w-full">
+              <div className="flex gap-4 animate-ticker" style={{ width: "max-content" }}>
+                {[...pools, ...pools].map((p, i) => (
+                  <div key={i} className="flex-shrink-0 bg-white border border-gray-200 rounded-xl px-4 py-3 shadow-sm text-left" style={{ minWidth: "160px" }}>
+                    <p className="font-semibold text-gray-900 text-sm">{p.name}</p>
+                    <p className="text-xs text-gray-500 mt-0.5">{p.region}</p>
+                  </div>
+                ))}
+              </div>
+            </div>
+          </section>
+        );
+      })()}
 
       {/* Demo Video */}
       <section className="py-16 px-8 w-full max-w-4xl text-center">
