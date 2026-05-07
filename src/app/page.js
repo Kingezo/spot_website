@@ -23,7 +23,7 @@ const t = {
     community_title: "More Than Saving Alone",
     community_body: "Spot turns saving into a shared goal. Members stay accountable, support each other, and take turns receiving a larger payout — giving some a boost today while helping everyone build toward their goals over time.",
     pools_title: "One Idea, Every Culture",
-    tradition_body: "Money pools — known academically as ROSCAs — have existed for centuries across the world. Members contribute regularly and take turns receiving the full payout, built on trust and community. That's the same foundation Spot is built on.",
+    tradition_body: "Money pools, used by over 1 billion people worldwide, have existed for centuries across cultures. Members contribute regularly and take turns receiving the full payout, built on trust and community. That's the same foundation Spot is built on.",
     video_title: "See Spot in Action",
     join_title: "Join Today!",
     join_subtitle: "Available on iOS and Android.",
@@ -60,7 +60,7 @@ const t = {
     community_title: "Más que ahorrar solo",
     community_body: "Spot convierte el ahorro en una meta compartida. Los miembros se mantienen responsables, se apoyan mutuamente y se turnan para recibir un pago mayor — dándole un impulso a algunos hoy mientras todos avanzan hacia sus metas.",
     pools_title: "Una idea, cada cultura",
-    tradition_body: "Las tandas — conocidas académicamente como ROSCAs — han existido por siglos en todo el mundo. Los miembros contribuyen regularmente y se turnan para recibir el pago completo, basándose en confianza y comunidad. Esa es la misma base sobre la que está construido Spot.",
+    tradition_body: "Las tandas, usadas por más de 1,000 millones de personas en todo el mundo, han existido por siglos en distintas culturas. Los miembros contribuyen regularmente y se turnan para recibir el pago completo, basándose en confianza y comunidad. Esa es la misma base sobre la que está construido Spot.",
     video_title: "Mira Spot en acción",
     join_title: "¡Únete hoy!",
     join_subtitle: "Disponible en iOS y Android.",
@@ -196,26 +196,26 @@ export default function Home() {
       {/* Money Pools Around the World */}
       {(() => {
         const pools = [
-          { name: "Tanda", region: "Mexico / Latin America", flag: "🇲🇽" },
-          { name: "Susu / Sou-Sou", region: "West Africa & Caribbean", flag: "🇬🇭" },
-          { name: "Esusu", region: "Nigeria / West Africa", flag: "🇳🇬" },
-          { name: "Pardna / Pardner", region: "Caribbean", flag: "🇯🇲" },
-          { name: "Chama", region: "East Africa", flag: "🇰🇪" },
-          { name: "Hagbad", region: "Somali communities", flag: "🇸🇴" },
-          { name: "Stokvel", region: "South Africa", flag: "🇿🇦" },
-          { name: "Equb / Ekub", region: "Ethiopia", flag: "🇪🇹" },
-          { name: "Hui", region: "China", flag: "🇨🇳" },
-          { name: "Hụi / Hội", region: "Vietnam", flag: "🇻🇳" },
-          { name: "Paluwagan", region: "Philippines", flag: "🇵🇭" },
-          { name: "Kameti / Committee", region: "Pakistan / India", flag: "🇵🇰" },
-          { name: "Chit Fund", region: "India", flag: "🇮🇳" },
-          { name: "Kye / Gye", region: "Korea", flag: "🇰🇷" },
-          { name: "Tanomoshi-ko", region: "Japan", flag: "🇯🇵" },
-          { name: "Cundina", region: "Mexican-American", flag: "🇲🇽" },
-          { name: "Consórcio", region: "Brazil", flag: "🇧🇷" },
-          { name: "Cuchubal", region: "Guatemala", flag: "🇬🇹" },
-          { name: "Junta / Pandero", region: "Peru", flag: "🇵🇪" },
-          { name: "Merry-go-round", region: "Kenya", flag: "🇰🇪" },
+          { name: "Tanda", region: "Mexico / Latin America", code: "mx" },
+          { name: "Susu / Sou-Sou", region: "West Africa & Caribbean", code: "gh" },
+          { name: "Esusu", region: "Nigeria / West Africa", code: "ng" },
+          { name: "Pardna / Pardner", region: "Caribbean", code: "jm" },
+          { name: "Chama", region: "East Africa", code: "ke" },
+          { name: "Hagbad", region: "Somali communities", code: "so" },
+          { name: "Stokvel", region: "South Africa", code: "za" },
+          { name: "Equb / Ekub", region: "Ethiopia", code: "et" },
+          { name: "Hui", region: "China", code: "cn" },
+          { name: "Hụi / Hội", region: "Vietnam", code: "vn" },
+          { name: "Paluwagan", region: "Philippines", code: "ph" },
+          { name: "Kameti / Committee", region: "Pakistan / India", code: "pk" },
+          { name: "Chit Fund", region: "India", code: "in" },
+          { name: "Kye / Gye", region: "Korea", code: "kr" },
+          { name: "Tanomoshi-ko", region: "Japan", code: "jp" },
+          { name: "Cundina", region: "Mexican-American", code: "mx" },
+          { name: "Consórcio", region: "Brazil", code: "br" },
+          { name: "Cuchubal", region: "Guatemala", code: "gt" },
+          { name: "Junta / Pandero", region: "Peru", code: "pe" },
+          { name: "Merry-go-round", region: "Kenya", code: "ke" },
         ];
         return (
           <section className="w-full bg-gray-50 py-12 border-t border-gray-100">
@@ -227,7 +227,7 @@ export default function Home() {
               <div className="flex gap-3 animate-ticker" style={{ width: "max-content" }}>
                 {[...pools, ...pools].map((p, i) => (
                   <div key={i} className="flex-shrink-0 bg-white border border-gray-200 rounded-xl px-4 py-3 shadow-sm text-left" style={{ minWidth: "150px" }}>
-                    <p className="text-xl mb-1">{p.flag}</p>
+                    <img src={`https://flagcdn.com/w40/${p.code}.png`} alt={p.region} width={28} height={20} className="mb-1 rounded-sm object-cover" style={{ height: "20px" }} />
                     <p className="font-semibold text-gray-900 text-sm">{p.name}</p>
                     <p className="text-xs text-gray-400 mt-0.5">{p.region}</p>
                   </div>
