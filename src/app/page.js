@@ -124,8 +124,9 @@ export default function Home() {
   return (
     <div className="bg-white text-gray-900 min-h-screen flex flex-col items-center">
 
-      {/* Language toggle */}
-      <div className="w-full flex justify-end px-6 py-3 bg-white border-b border-gray-100">
+      {/* Nav */}
+      <div className="w-full flex items-center justify-between px-6 py-3 bg-white border-b border-gray-100">
+        <img src="/spot_logo.jpg" alt="Spot Financial" className="h-10 w-10 rounded-full object-cover" />
         <button
           onClick={() => setLang(lang === "en" ? "es" : "en")}
           className="text-sm font-semibold px-4 py-1.5 rounded-full border transition hover:bg-gray-50"
