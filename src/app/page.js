@@ -6,7 +6,7 @@ import { db } from "./firebaseConfig";
 
 const t = {
   en: {
-    hero_tagline: "Save Money and Build Credit Today!",
+    hero_tagline: "Build Credit by Saving Money Today!",
     hero_cta: "Join the Waitlist",
     stat_users: "Active Users",
     stat_saved: "Saved by Members",
@@ -43,7 +43,7 @@ const t = {
     waitlist_error: "Error signing up. Please try again.",
   },
   es: {
-    hero_tagline: "¡Ahorra dinero y construye crédito hoy!",
+    hero_tagline: "¡Construye crédito ahorrando dinero hoy!",
     hero_cta: "Únete a la lista de espera",
     stat_users: "Usuarios activos",
     stat_saved: "Ahorrado por miembros",
@@ -124,9 +124,8 @@ export default function Home() {
   return (
     <div className="bg-white text-gray-900 min-h-screen flex flex-col items-center">
 
-      {/* Nav */}
-      <div className="w-full flex items-center justify-between px-6 py-3 bg-white border-b border-gray-100">
-        <img src="/spot_logo.jpg" alt="Spot Financial" className="h-10 w-10 rounded-full object-cover" />
+      {/* Language toggle */}
+      <div className="w-full flex justify-end px-6 py-3 bg-white border-b border-gray-100">
         <button
           onClick={() => setLang(lang === "en" ? "es" : "en")}
           className="text-sm font-semibold px-4 py-1.5 rounded-full border transition hover:bg-gray-50"
@@ -138,7 +137,7 @@ export default function Home() {
 
       {/* Hero */}
       <section className="w-full text-center py-20 bg-green-600 text-white px-6">
-        <h1 className="text-5xl font-extrabold mb-4">Spot</h1>
+        <img src="/spot_logo.jpg" alt="Spot Financial" className="mx-auto mb-4 rounded-full object-cover" style={{ width: "100px", height: "100px" }} />
         <p className="text-lg max-w-2xl mx-auto mb-6">{c.hero_tagline}</p>
         <Button onClick={scrollToWaitlist} className="bg-white text-green-600 px-8 py-3 rounded-lg shadow-lg hover:bg-gray-200 transition">
           {c.hero_cta}
