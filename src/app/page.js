@@ -137,7 +137,7 @@ export default function Home() {
 
       {/* Hero */}
       <section className="w-full text-center py-20 bg-green-600 text-white px-6">
-        <img src="/spot_logo.jpg" alt="Spot Financial" className="mx-auto mb-4 rounded-full object-cover" style={{ width: "100px", height: "100px" }} />
+        <img src="/spot_logo.jpg" alt="Spot Financial" className="mx-auto mb-4 rounded-full object-cover" style={{ width: "180px", height: "180px" }} />
         <p className="text-lg max-w-2xl mx-auto mb-6">{c.hero_tagline}</p>
         <Button onClick={scrollToWaitlist} className="bg-white text-green-600 px-8 py-3 rounded-lg shadow-lg hover:bg-gray-200 transition">
           {c.hero_cta}
