@@ -1,0 +1,15 @@
+{
+  "redirects": [
+    {
+      "source": "/:path*",
+      "has": [
+        {
+          "type": "host",
+          "value": "spot-nu-olive.vercel.app"
+        }
+      ],
+      "destination": "https://usespotfinancial.com/:path*",
+      "permanent": true
+    }
+  ]
+}
